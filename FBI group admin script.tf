@@ -9,11 +9,11 @@ provider "okta" {
   }
 
   resource "okta_group" "FBIAdmin_group" {
-  name        = "FBI Group Admin"
+  name        = "team-group-admins-fbi"
   description = "FBI users with group admin and report admin privileges"
 }
 data "okta_group" "FBI_groupid" {
-  name = "FBI Group Admin"
+  name = "team-group-admins-fbi"
 }
 data "okta_group" "FBI_member" {
   name = "FBI Member"
@@ -30,4 +30,3 @@ resource "okta_group_role" "reportadmin_role" {
   group_id = data.okta_group.FBI_groupid.id
   role_type = "REPORT_ADMIN"
 }
-
